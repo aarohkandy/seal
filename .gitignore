@@ -1,0 +1,23 @@
+# Local runtime and dependency folders
+node_modules/
+.next/
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Temporary extraction/cache files
+tmp/
+*.log
+
+# Local research source files may contain private applicant/member data.
+docs/source-pdfs/
+docs/extracted/
+docs/extracted-index.json
