@@ -256,9 +256,9 @@ export const demoState: DemoState = {
     },
     {
       id: "training-3",
-      slug: "ai-tools",
-      title: "AI tool fluency",
-      description: "How to use AI assistants without hiding uncertainty or copying private data.",
+      slug: "research-tools",
+      title: "Research tool fluency",
+      description: "How to use modern tools without hiding uncertainty or copying private data.",
       orderIndex: 3,
       isRequired: true
     },

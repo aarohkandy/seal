@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const areas = [
   ["Energy and sustainability", "Industrial assessment, energy efficiency, facility data, and practical recommendations."],
   ["Embedded sensing", "PCB design, microcontrollers, signal processing, and field instrumentation."],
-  ["Automation and software", "Dashboards, data pipelines, task systems, AI-supported workflows, and lab tooling."],
+  ["Automation and software", "Dashboards, data pipelines, task systems, reviewed workflows, and lab tooling."],
   ["Plasma and aerospace", "High-voltage systems, propulsion concepts, aviation design, and advanced sensing."],
   ["Health and environment", "PPG, water, air quality, safety, and biomedical or environmental instrumentation."],
   ["Commercialization", "Grants, business plans, patents, papers, partner discovery, and public communication."]

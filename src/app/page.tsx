@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { demoState } from "@/lib/demo-data";
@@ -28,7 +27,7 @@ const priorities = [
 const researchAreas = [
   { title: "Sensors", copy: "Embedded boards, weak-signal detection, field instrumentation.", Icon: CircuitBoard },
   { title: "Energy", copy: "Assessment workflows, sustainability recommendations, facility data.", Icon: FlaskConical },
-  { title: "Automation", copy: "Dashboards, task boards, reporting, and reliable lab operations.", Icon: DatabaseZap },
+  { title: "Automation", copy: "Dashboards, task boards, reporting, and steady lab operations.", Icon: DatabaseZap },
   { title: "Student growth", copy: "Quests, mentoring, weekly reports, and portfolio-quality work.", Icon: GraduationCap }
 ];
 
@@ -43,21 +42,21 @@ export default function HomePage() {
             alt="Modern university lab equipment for sensors, energy, and automation work"
             fill
             priority
-            className="object-cover opacity-58"
+            className="object-cover opacity-45"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#161321] via-[#161321]/82 to-[#161321]/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#14111d] via-[#14111d]/90 to-[#14111d]/38" />
           <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <Badge tone="gold" className="border-white/18 bg-white/10 text-white">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d7c99b]">
                 SEAL onboarding and lab operations
-              </Badge>
+              </p>
               <h1 className="mt-6 max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
                 One solid platform for quests, teams, reports, and momentum.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
-                A modern replacement for spreadsheet-based onboarding that preserves the lab's RPG
-                flavor while making the next action obvious, validated, and fast.
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white">
+                A working replacement for spreadsheet-based onboarding that keeps the lab's quest
+                language while making each next action clear, validated, and fast.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" variant="gold">
@@ -65,7 +64,7 @@ export default function HomePage() {
                     Open demo app <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="secondary" className="border-white/20 bg-white/12 text-white hover:bg-white/18">
+                <Button asChild size="lg" variant="secondary" className="border-white bg-transparent text-white hover:bg-transparent">
                   <Link href="/join">See onboarding</Link>
                 </Button>
               </div>
@@ -76,9 +75,9 @@ export default function HomePage() {
                   [demoState.quests.filter((quest) => quest.status === "active").length.toString(), "active quests"],
                   ["0", "copy-paste IDs"]
                 ].map(([value, label]) => (
-                  <div key={label} className="rounded-lg border border-white/14 bg-white/10 p-4">
+                  <div key={label} className="rounded-md border border-white/38 bg-[#14111d]/68 p-4">
                     <p className="text-2xl font-semibold">{value}</p>
-                    <p className="mt-1 text-white/70">{label}</p>
+                    <p className="mt-1 text-white">{label}</p>
                   </div>
                 ))}
               </div>
@@ -89,7 +88,9 @@ export default function HomePage() {
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
-              <Badge tone="purple">The thesis</Badge>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+                Operating principle
+              </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
                 Keep the game skin. Remove the plumbing.
               </h2>
@@ -103,7 +104,7 @@ export default function HomePage() {
               {priorities.map(([title, copy], index) => (
                 <Card key={title} className="min-h-44">
                   <CardHeader>
-                    <div className="flex size-10 items-center justify-center rounded-md bg-[rgba(75,46,131,0.10)] text-[var(--brand-primary)]">
+                    <div className="flex size-10 items-center justify-center rounded-md border border-[var(--border)] bg-white text-[var(--brand-primary)]">
                       {index === 0 ? <Clock3 className="size-5" /> : null}
                       {index === 1 ? <Sparkles className="size-5" /> : null}
                       {index === 2 ? <BadgeCheck className="size-5" /> : null}
@@ -121,7 +122,9 @@ export default function HomePage() {
         <section className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <Badge tone="gold">Lab-ready scope</Badge>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#6b5a31]">
+                Lab-ready scope
+              </p>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Built for research operations, not a brochure.</h2>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">

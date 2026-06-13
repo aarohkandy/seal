@@ -52,7 +52,7 @@ export default function OnboardingPage() {
           <Card id={id} key={id}>
             <CardHeader>
               <div className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-md bg-[rgba(75,46,131,0.10)] font-semibold text-[var(--brand-primary)]">
+                <span className="grid size-9 place-items-center rounded-md border border-[var(--border)] bg-white font-semibold text-[var(--brand-primary)]">
                   {index + 1}
                 </span>
                 <CardTitle>{title}</CardTitle>

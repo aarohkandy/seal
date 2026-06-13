@@ -42,7 +42,7 @@ export default function JoinPage() {
         <ol className="grid gap-3">
           {screens.map((screen, index) => (
             <li key={screen} className="flex items-center gap-4 rounded-lg border border-[var(--border)] bg-white p-4 shadow-sm">
-              <span className="grid size-10 place-items-center rounded-md bg-[rgba(75,46,131,0.10)] font-semibold text-[var(--brand-primary)]">
+              <span className="grid size-10 place-items-center rounded-md border border-[var(--border)] bg-white font-semibold text-[var(--brand-primary)]">
                 {index + 1}
               </span>
               <div className="flex-1">

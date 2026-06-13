@@ -48,7 +48,7 @@ Optional/feature-flagged:
 - `RESEND_API_KEY`
 - `CRON_SECRET`
 - `NEXT_PUBLIC_ENABLE_DISCORD=false`
-- `NEXT_PUBLIC_ENABLE_HELP_AI=false`
+- `NEXT_PUBLIC_ENABLE_GUIDED_QA=false`
 
 ## Scripts
 

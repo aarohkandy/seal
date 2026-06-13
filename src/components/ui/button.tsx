@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -33,5 +33,16 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 export function Button({ className, variant, size, asChild, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : "button";
-  return <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} />;
+  const resolvedVariant = variant ?? "primary";
+  const foreground =
+    className?.includes("text-white")
+      ? "#ffffff"
+      : resolvedVariant === "primary"
+        ? "#ffffff"
+        : resolvedVariant === "gold"
+          ? "#241a0b"
+          : "var(--ink)";
+  const style = { color: foreground, ...(props.style as CSSProperties | undefined) };
+
+  return <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} style={style} />;
 }

@@ -8,7 +8,7 @@ export default function HelpPage() {
       <div>
         <Badge tone="gold">Help center</Badge>
         <h2 className="mt-3 text-3xl font-semibold">Universal How-To, rewritten as articles</h2>
-        <p className="mt-2 text-slate-600">Searchable markdown articles first. AI Q&A stays feature-flagged for later.</p>
+        <p className="mt-2 text-slate-600">Searchable markdown articles first. Guided Q&A stays feature-flagged for later.</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {demoState.helpArticles.map((article) => (
