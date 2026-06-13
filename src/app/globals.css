@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --brand-primary: #4b2e83;
+  --brand-gold: #b7a57a;
+  --ink: #1f1b2e;
+  --surface: #ffffff;
+  --surface-muted: #f5f4f8;
+  --border: #e4e1ec;
+  --status-green: #1e8e5a;
+  --status-yellow: #c77d11;
+  --status-red: #c0392b;
+  --status-blue: #2d6cdf;
+  --teal: #1d7f7a;
+  --steel: #42556f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(183, 165, 122, 0.18), transparent 32rem),
+    linear-gradient(180deg, #ffffff 0%, #f7f6fa 48%, #f2f6f5 100%);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(75, 46, 131, 0.18);
+}
+
+.solid-motion {
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(rgba(75, 46, 131, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 46, 131, 0.07) 1px, transparent 1px);
+  background-size: 36px 36px;
+}

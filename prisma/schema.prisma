@@ -1,0 +1,267 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum MemberStatus {
+  applicant
+  associate_unintegrated
+  associate_integrated
+  inactive
+}
+
+enum SystemRole {
+  member
+  lead
+  director
+}
+
+enum ManualStatus {
+  good
+  warning
+  alert
+}
+
+enum TeamRole {
+  member
+  lead
+}
+
+enum QuestStatus {
+  active
+  frozen
+  archived
+}
+
+enum QuestRole {
+  member
+  lead
+  reviewer
+}
+
+enum TaskStatus {
+  todo
+  in_progress
+  blocked
+  in_review
+  done
+}
+
+enum TaskPriority {
+  low
+  normal
+  high
+}
+
+enum TrainingStatus {
+  not_started
+  studied
+  mastered
+}
+
+enum AvailabilityType {
+  discord_voice
+  meeting_ready
+}
+
+enum ReportStatus {
+  draft
+  under_review
+  approved
+  missed
+}
+
+model Profile {
+  id                    String             @id @db.Uuid
+  handle                String             @unique
+  fullName              String             @map("full_name")
+  email                 String             @unique
+  avatarUrl             String?            @map("avatar_url")
+  status                MemberStatus       @default(applicant)
+  systemRole            SystemRole         @default(member) @map("system_role")
+  bio                   String?
+  interests             Json               @default("[]")
+  skills                Json               @default("[]")
+  commitmentHours       Int?               @map("commitment_hours")
+  creditsRequested      Int?               @map("credits_requested")
+  goal                  String?
+  links                 Json?
+  manualStatus          ManualStatus       @default(good) @map("manual_status")
+  discordUserId         String?            @map("discord_user_id")
+  slackMemberId         String?            @map("slack_member_id")
+  joinedAt              DateTime?          @map("joined_at") @db.Timestamptz(6)
+  onboardingCompletedAt DateTime?          @map("onboarding_completed_at") @db.Timestamptz(6)
+  lastCheckInAt         DateTime?          @map("last_check_in_at") @db.Timestamptz(6)
+  createdAt             DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt             DateTime           @updatedAt @map("updated_at") @db.Timestamptz(6)
+  ledTeams              Team[]             @relation("TeamLead")
+  teamMemberships       TeamMember[]
+  ledQuests             Quest[]            @relation("QuestLead")
+  reviewedQuests        Quest[]            @relation("QuestReviewer")
+  questMemberships      QuestMember[]
+  assignedTasks         Task[]             @relation("AssignedTasks")
+  assignedByTasks       Task[]             @relation("AssignedByTasks")
+  trainingProgress      TrainingProgress[]
+  availability          Availability[]
+  weeklyReports         WeeklyReport[]     @relation("ProfileReports")
+  reportsToReview       WeeklyReport[]     @relation("ReportValidator")
+
+  @@map("profiles")
+}
+
+model Team {
+  id                  String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug                String       @unique
+  name                String
+  description         String
+  hasCustomOnboarding Boolean      @default(false) @map("has_custom_onboarding")
+  isActive            Boolean      @default(true) @map("is_active")
+  leadId              String?      @map("lead_id") @db.Uuid
+  lead                Profile?     @relation("TeamLead", fields: [leadId], references: [id])
+  memberships         TeamMember[]
+  quests              Quest[]
+  createdAt           DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt           DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("teams")
+}
+
+model TeamMember {
+  teamId    String   @map("team_id") @db.Uuid
+  profileId String   @map("profile_id") @db.Uuid
+  role      TeamRole @default(member)
+  joinedAt  DateTime @default(now()) @map("joined_at") @db.Timestamptz(6)
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@id([teamId, profileId])
+  @@map("team_members")
+}
+
+model Quest {
+  id              String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug            String        @unique
+  title           String
+  description     String
+  teamId          String        @map("team_id") @db.Uuid
+  team            Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  status          QuestStatus   @default(active)
+  leadId          String?       @map("lead_id") @db.Uuid
+  lead            Profile?      @relation("QuestLead", fields: [leadId], references: [id])
+  reviewerId      String?       @map("reviewer_id") @db.Uuid
+  reviewer        Profile?      @relation("QuestReviewer", fields: [reviewerId], references: [id])
+  slackChannelUrl String?       @map("slack_channel_url")
+  isSandbox       Boolean       @default(false) @map("is_sandbox")
+  outputs         Json          @default("[]")
+  memberships     QuestMember[]
+  tasks           Task[]
+  createdAt       DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime      @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("quests")
+}
+
+model QuestMember {
+  questId   String    @map("quest_id") @db.Uuid
+  profileId String    @map("profile_id") @db.Uuid
+  role      QuestRole @default(member)
+  joinedAt  DateTime  @default(now()) @map("joined_at") @db.Timestamptz(6)
+  quest     Quest     @relation(fields: [questId], references: [id], onDelete: Cascade)
+  profile   Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@id([questId, profileId])
+  @@map("quest_members")
+}
+
+model Task {
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  questId     String       @map("quest_id") @db.Uuid
+  quest       Quest        @relation(fields: [questId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  status      TaskStatus   @default(todo)
+  priority    TaskPriority @default(normal)
+  assignedTo  String?      @map("assigned_to") @db.Uuid
+  assignee    Profile?     @relation("AssignedTasks", fields: [assignedTo], references: [id])
+  assignedBy  String?      @map("assigned_by") @db.Uuid
+  assigner    Profile?     @relation("AssignedByTasks", fields: [assignedBy], references: [id])
+  orderIndex  Int          @map("order_index")
+  completedAt DateTime?    @map("completed_at") @db.Timestamptz(6)
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("tasks")
+}
+
+model TrainingModule {
+  id          String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug        String             @unique
+  title       String
+  description String
+  contentUrl  String?            @map("content_url")
+  orderIndex  Int                @map("order_index")
+  isRequired  Boolean            @default(true) @map("is_required")
+  progress    TrainingProgress[]
+  createdAt   DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime           @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("training_modules")
+}
+
+model TrainingProgress {
+  profileId String         @map("profile_id") @db.Uuid
+  moduleId  String         @map("module_id") @db.Uuid
+  status    TrainingStatus @default(not_started)
+  updatedAt DateTime       @updatedAt @map("updated_at") @db.Timestamptz(6)
+  profile   Profile        @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  module    TrainingModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, moduleId])
+  @@map("training_progress")
+}
+
+model Availability {
+  profileId String           @map("profile_id") @db.Uuid
+  dayOfWeek Int              @map("day_of_week")
+  slotStart String           @map("slot_start")
+  type      AvailabilityType
+  profile   Profile          @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, dayOfWeek, slotStart])
+  @@map("availability")
+}
+
+model WeeklyReport {
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  profileId   String       @map("profile_id") @db.Uuid
+  profile     Profile      @relation("ProfileReports", fields: [profileId], references: [id], onDelete: Cascade)
+  weekStart   DateTime     @map("week_start") @db.Date
+  status      ReportStatus @default(draft)
+  answers     Json
+  validatorId String?      @map("validator_id") @db.Uuid
+  validator   Profile?     @relation("ReportValidator", fields: [validatorId], references: [id])
+  submittedAt DateTime?    @map("submitted_at") @db.Timestamptz(6)
+  reviewedAt  DateTime?    @map("reviewed_at") @db.Timestamptz(6)
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@unique([profileId, weekStart])
+  @@map("weekly_reports")
+}
+
+model HelpArticle {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug      String   @unique
+  title     String
+  body      String
+  category  String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("help_articles")
+}

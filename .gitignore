@@ -7,6 +7,7 @@ build/
 # Environment files
 .env
 .env.*
+!.env.example
 
 # OS/editor noise
 .DS_Store
@@ -16,6 +17,7 @@ Thumbs.db
 # Temporary extraction/cache files
 tmp/
 *.log
+tsconfig.tsbuildinfo
 
 # Local research source files may contain private applicant/member data.
 docs/source-pdfs/
