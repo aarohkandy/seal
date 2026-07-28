@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules
+.next
+dist
+build
+coverage
+
+# Generated or machine-managed files
+package-lock.json
+next-env.d.ts
+
+# Prose docs are maintained by hand
+*.md
+
+# Private research sources (also gitignored)
+docs/source-pdfs
+docs/extracted
