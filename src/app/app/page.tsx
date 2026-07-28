@@ -30,8 +30,7 @@ export default function AppDashboardPage() {
             Welcome back, {profile.handle}.
           </h2>
           <p className="mt-2 max-w-2xl text-slate-600">
-            This is the auto-built dashboard that replaces copied dashboard sheets and the old
-            diagnostic column.
+            This is the auto-built dashboard that replaces copied dashboard sheets and the old diagnostic column.
           </p>
         </div>
         <Button asChild variant="secondary">
@@ -53,10 +52,15 @@ export default function AppDashboardPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {activeTasks.map((task) => (
-              <div key={task.id} className="flex items-center justify-between rounded-md border border-[var(--border)] p-3">
+              <div
+                key={task.id}
+                className="flex items-center justify-between rounded-md border border-[var(--border)] p-3"
+              >
                 <div>
                   <p className="font-medium">{task.title}</p>
-                  <p className="text-sm text-slate-600">{task.status.replaceAll("_", " ")} · {task.priority}</p>
+                  <p className="text-sm text-slate-600">
+                    {task.status.replaceAll("_", " ")} · {task.priority}
+                  </p>
                 </div>
                 <ClipboardCheck className="size-5 text-[var(--teal)]" aria-hidden="true" />
               </div>

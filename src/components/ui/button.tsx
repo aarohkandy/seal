@@ -34,14 +34,13 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 export function Button({ className, variant, size, asChild, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : "button";
   const resolvedVariant = variant ?? "primary";
-  const foreground =
-    className?.includes("text-white")
+  const foreground = className?.includes("text-white")
+    ? "#ffffff"
+    : resolvedVariant === "primary"
       ? "#ffffff"
-      : resolvedVariant === "primary"
-        ? "#ffffff"
-        : resolvedVariant === "gold"
-          ? "#241a0b"
-          : "var(--ink)";
+      : resolvedVariant === "gold"
+        ? "#241a0b"
+        : "var(--ink)";
   const style = { color: foreground, ...(props.style as CSSProperties | undefined) };
 
   return <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} style={style} />;

@@ -4,7 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const areas = [
-  ["Energy and sustainability", "Industrial assessment, energy efficiency, facility data, and practical recommendations."],
+  [
+    "Energy and sustainability",
+    "Industrial assessment, energy efficiency, facility data, and practical recommendations."
+  ],
   ["Embedded sensing", "PCB design, microcontrollers, signal processing, and field instrumentation."],
   ["Automation and software", "Dashboards, data pipelines, task systems, reviewed workflows, and lab tooling."],
   ["Plasma and aerospace", "High-voltage systems, propulsion concepts, aviation design, and advanced sensing."],
@@ -22,8 +25,8 @@ export default function ResearchPage() {
           Research areas students can understand and act on.
         </h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-          The public site explains SEAL by work area. The internal app maps those areas into teams,
-          quests, tasks, reports, and the next objective for each member.
+          The public site explains SEAL by work area. The internal app maps those areas into teams, quests, tasks,
+          reports, and the next objective for each member.
         </p>
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {areas.map(([title, copy]) => (

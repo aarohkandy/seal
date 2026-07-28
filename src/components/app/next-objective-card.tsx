@@ -34,7 +34,9 @@ export function NextObjectiveCard({
         <div className="mt-5 space-y-2">
           <div className="flex justify-between text-sm font-medium">
             <span>Phase progress</span>
-            <span>{progress.satisfied}/{progress.total}</span>
+            <span>
+              {progress.satisfied}/{progress.total}
+            </span>
           </div>
           <Progress value={progress.percent} />
         </div>

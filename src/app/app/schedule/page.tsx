@@ -26,7 +26,10 @@ export default function SchedulePage() {
             <CardContent className="space-y-2">
               {slots.length ? (
                 slots.map((slot) => (
-                  <Badge key={`${slot.profileId}-${slot.slotStart}-${slot.type}`} tone={slot.type === "meeting_ready" ? "green" : "blue"}>
+                  <Badge
+                    key={`${slot.profileId}-${slot.slotStart}-${slot.type}`}
+                    tone={slot.type === "meeting_ready" ? "green" : "blue"}
+                  >
                     {slot.slotStart}
                   </Badge>
                 ))

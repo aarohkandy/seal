@@ -100,8 +100,7 @@ export const demoState: DemoState = {
       id: "team-biztech",
       slug: "biztech",
       name: "Biz/Tech",
-      description:
-        "Spin-off planning, proposal writing, scholarship coordination, marketing, and cross-lab strategy.",
+      description: "Spin-off planning, proposal writing, scholarship coordination, marketing, and cross-lab strategy.",
       hasCustomOnboarding: false,
       isActive: true,
       leadId: "profile-4"

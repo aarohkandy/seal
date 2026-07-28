@@ -25,8 +25,8 @@ export default function JoinPage() {
             Six screens. No spreadsheet scavenger hunt.
           </h1>
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            New members should know what to do next, why it matters, and what unlocks after they
-            finish. The platform collapses setup into one guided path.
+            New members should know what to do next, why it matters, and what unlocks after they finish. The platform
+            collapses setup into one guided path.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -41,7 +41,10 @@ export default function JoinPage() {
         </div>
         <ol className="grid gap-3">
           {screens.map((screen, index) => (
-            <li key={screen} className="flex items-center gap-4 rounded-lg border border-[var(--border)] bg-white p-4 shadow-sm">
+            <li
+              key={screen}
+              className="flex items-center gap-4 rounded-lg border border-[var(--border)] bg-white p-4 shadow-sm"
+            >
               <span className="grid size-10 place-items-center rounded-md border border-[var(--border)] bg-white font-semibold text-[var(--brand-primary)]">
                 {index + 1}
               </span>

@@ -34,7 +34,9 @@ export default function RosterPage() {
                     <td className="py-3 font-semibold">{profile.handle}</td>
                     <td>{profile.status.replaceAll("_", " ")}</td>
                     <td>{profile.systemRole}</td>
-                    <td><Badge tone={score.color}>{score.overall}%</Badge></td>
+                    <td>
+                      <Badge tone={score.color}>{score.overall}%</Badge>
+                    </td>
                     <td>{profile.manualStatus}</td>
                   </tr>
                 );

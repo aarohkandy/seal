@@ -1,5 +1,14 @@
 import Link from "next/link";
-import { BarChart3, BookOpen, CalendarDays, ClipboardList, Compass, LayoutDashboard, Shield, Users } from "lucide-react";
+import {
+  BarChart3,
+  BookOpen,
+  CalendarDays,
+  ClipboardList,
+  Compass,
+  LayoutDashboard,
+  Shield,
+  Users
+} from "lucide-react";
 import { getCurrentProfile } from "@/lib/demo-data";
 import { Badge } from "@/components/ui/badge";
 

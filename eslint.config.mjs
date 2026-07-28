@@ -4,13 +4,7 @@ import tseslint from "typescript-eslint";
 export default [
   ...tseslint.configs.recommended,
   {
-    ignores: [
-      ".next/**",
-      "node_modules/**",
-      "coverage/**",
-      "docs/source-pdfs/**",
-      "docs/extracted/**"
-    ]
+    ignores: [".next/**", "node_modules/**", "coverage/**", "docs/source-pdfs/**", "docs/extracted/**"]
   },
   {
     files: ["**/*.{ts,tsx}"],
@@ -20,7 +14,7 @@ export default [
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
-      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
     }
   }
 ];

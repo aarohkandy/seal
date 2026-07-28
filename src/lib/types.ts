@@ -1,8 +1,4 @@
-export type MemberStatus =
-  | "applicant"
-  | "associate_unintegrated"
-  | "associate_integrated"
-  | "inactive";
+export type MemberStatus = "applicant" | "associate_unintegrated" | "associate_integrated" | "inactive";
 
 export type SystemRole = "member" | "lead" | "director";
 export type ManualStatus = "good" | "warning" | "alert";

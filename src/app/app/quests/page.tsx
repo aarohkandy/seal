@@ -15,7 +15,9 @@ export default function QuestsPage() {
       <div>
         <Badge tone="purple">Quest board</Badge>
         <h2 className="mt-3 text-3xl font-semibold">Active quests</h2>
-        <p className="mt-2 text-slate-600">Frozen quests stay hidden from join lists. Sandbox quests are beginner-friendly.</p>
+        <p className="mt-2 text-slate-600">
+          Frozen quests stay hidden from join lists. Sandbox quests are beginner-friendly.
+        </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {quests.map((quest) => {
@@ -36,7 +38,10 @@ export default function QuestsPage() {
                 <p className="text-sm leading-6 text-slate-600">{quest.description}</p>
                 <div className="space-y-2">
                   {tasks.map((task) => (
-                    <div key={task.id} className="flex items-center justify-between rounded-md bg-[var(--surface-muted)] p-3 text-sm">
+                    <div
+                      key={task.id}
+                      className="flex items-center justify-between rounded-md bg-[var(--surface-muted)] p-3 text-sm"
+                    >
                       <span>{task.title}</span>
                       <Badge tone={task.assignedTo ? "green" : "yellow"}>{task.assignedTo ? "assigned" : "open"}</Badge>
                     </div>

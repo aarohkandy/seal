@@ -11,7 +11,9 @@ export default function ReportsPage() {
       <div>
         <Badge tone="gold">Weekly report</Badge>
         <h2 className="mt-3 text-3xl font-semibold">GPS reports, without the GPS sheet</h2>
-        <p className="mt-2 text-slate-600">Reports are template-driven and route to the right validator automatically.</p>
+        <p className="mt-2 text-slate-600">
+          Reports are template-driven and route to the right validator automatically.
+        </p>
       </div>
       <Card>
         <CardHeader>
@@ -29,12 +31,16 @@ export default function ReportsPage() {
         {reports.map((report) => (
           <Card key={report.id}>
             <CardHeader>
-              <Badge tone={report.status === "approved" ? "green" : "yellow"}>{report.status.replaceAll("_", " ")}</Badge>
+              <Badge tone={report.status === "approved" ? "green" : "yellow"}>
+                {report.status.replaceAll("_", " ")}
+              </Badge>
               <CardTitle>Week of {report.weekStart}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600">
               {Object.entries(report.answers).map(([key, value]) => (
-                <p key={key}><span className="font-semibold text-[var(--ink)]">{key}:</span> {value}</p>
+                <p key={key}>
+                  <span className="font-semibold text-[var(--ink)]">{key}:</span> {value}
+                </p>
               ))}
               <Button variant="secondary">Review details</Button>
             </CardContent>

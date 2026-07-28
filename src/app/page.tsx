@@ -28,7 +28,11 @@ const researchAreas = [
   { title: "Sensors", copy: "Embedded boards, weak-signal detection, field instrumentation.", Icon: CircuitBoard },
   { title: "Energy", copy: "Assessment workflows, sustainability recommendations, facility data.", Icon: FlaskConical },
   { title: "Automation", copy: "Dashboards, task boards, reporting, and steady lab operations.", Icon: DatabaseZap },
-  { title: "Student growth", copy: "Quests, mentoring, weekly reports, and portfolio-quality work.", Icon: GraduationCap }
+  {
+    title: "Student growth",
+    copy: "Quests, mentoring, weekly reports, and portfolio-quality work.",
+    Icon: GraduationCap
+  }
 ];
 
 export default function HomePage() {
@@ -55,8 +59,8 @@ export default function HomePage() {
                 One solid platform for quests, teams, reports, and momentum.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white">
-                A working replacement for spreadsheet-based onboarding that keeps the lab's quest
-                language while making each next action clear, validated, and fast.
+                A working replacement for spreadsheet-based onboarding that keeps the lab's quest language while making
+                each next action clear, validated, and fast.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" variant="gold">
@@ -64,7 +68,12 @@ export default function HomePage() {
                     Open demo app <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="secondary" className="border-white bg-transparent text-white hover:bg-transparent">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="secondary"
+                  className="border-white bg-transparent text-white hover:bg-transparent"
+                >
                   <Link href="/join">See onboarding</Link>
                 </Button>
               </div>
@@ -95,9 +104,9 @@ export default function HomePage() {
                 Keep the game skin. Remove the plumbing.
               </h2>
               <p className="mt-4 text-lg leading-8 text-slate-650">
-                Quests, battlestations, levels, and XP can be motivating. The old pain came from
-                fragile cross-references, exact-match formulas, and diagnostics buried in sheets.
-                This app turns that mess into a clear, validated workflow.
+                Quests, battlestations, levels, and XP can be motivating. The old pain came from fragile
+                cross-references, exact-match formulas, and diagnostics buried in sheets. This app turns that mess into
+                a clear, validated workflow.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -122,10 +131,10 @@ export default function HomePage() {
         <section className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#6b5a31]">
-                Lab-ready scope
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Built for research operations, not a brochure.</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#6b5a31]">Lab-ready scope</p>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+                Built for research operations, not a brochure.
+              </h2>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {researchAreas.map(({ title, copy, Icon }) => (

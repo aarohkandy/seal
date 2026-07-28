@@ -26,15 +26,12 @@ function questMembershipCount(profile: Profile, state: DemoState) {
 }
 
 function hasActiveTask(profile: Profile, state: DemoState) {
-  return state.tasks.some(
-    (task) => task.assignedTo === profile.id && !["done", "blocked"].includes(task.status)
-  );
+  return state.tasks.some((task) => task.assignedTo === profile.id && !["done", "blocked"].includes(task.status));
 }
 
 function firstReportSubmitted(profile: Profile, state: DemoState) {
   return state.weeklyReports.some(
-    (report) =>
-      report.profileId === profile.id && ["under_review", "approved"].includes(report.status)
+    (report) => report.profileId === profile.id && ["under_review", "approved"].includes(report.status)
   );
 }
 

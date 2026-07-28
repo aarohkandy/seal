@@ -7,8 +7,8 @@ export function SiteFooter() {
         <div>
           <p className="font-semibold text-[var(--ink)]">SEAL Platform</p>
           <p className="mt-2 max-w-2xl">
-            A production-oriented replacement for spreadsheet onboarding, lab operations, quests,
-            weekly reporting, and team coordination.
+            A production-oriented replacement for spreadsheet onboarding, lab operations, quests, weekly reporting, and
+            team coordination.
           </p>
         </div>
         <div className="flex flex-wrap gap-4">

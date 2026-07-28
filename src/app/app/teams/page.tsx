@@ -8,11 +8,15 @@ export default function TeamsPage() {
       <div>
         <Badge tone="gold">Battlestations</Badge>
         <h2 className="mt-3 text-3xl font-semibold">Teams</h2>
-        <p className="mt-2 text-slate-600">Each team owns quests, members, meetings, and default weekly-report validation.</p>
+        <p className="mt-2 text-slate-600">
+          Each team owns quests, members, meetings, and default weekly-report validation.
+        </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {demoState.teams.map((team) => {
-          const questCount = demoState.quests.filter((quest) => quest.teamId === team.id && quest.status === "active").length;
+          const questCount = demoState.quests.filter(
+            (quest) => quest.teamId === team.id && quest.status === "active"
+          ).length;
           const members = demoState.teamMembers.filter((item) => item.teamId === team.id).length;
           return (
             <Card key={team.id}>

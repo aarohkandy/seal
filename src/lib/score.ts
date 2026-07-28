@@ -12,8 +12,7 @@ function activityScore(profile: Profile, state: DemoState) {
   )
     ? 35
     : 0;
-  const doneTasks = state.tasks.filter((task) => task.assignedTo === profile.id && task.status === "done")
-    .length;
+  const doneTasks = state.tasks.filter((task) => task.assignedTo === profile.id && task.status === "done").length;
   return clamp(hasTwoQuests + activeTask + Math.min(25, doneTasks * 12));
 }
 

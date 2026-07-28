@@ -44,7 +44,9 @@ export default function LoginPage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
-              <Button type="submit" className="w-full">Send magic link</Button>
+              <Button type="submit" className="w-full">
+                Send magic link
+              </Button>
             </form>
             <p className="mt-4 text-sm text-slate-600">{message}</p>
             <Button asChild variant="secondary" className="mt-4 w-full">

@@ -20,8 +20,8 @@ export default function ProjectsPage() {
               Quests that look like real work.
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-              This public view is intentionally sanitized. The real app keeps member status, private
-              links, and task ownership behind permissions.
+              This public view is intentionally sanitized. The real app keeps member status, private links, and task
+              ownership behind permissions.
             </p>
           </div>
           <Button asChild>
@@ -37,9 +37,7 @@ export default function ProjectsPage() {
               <Card key={quest.id}>
                 <CardHeader>
                   <div className="flex flex-wrap gap-2">
-                    <Badge tone={quest.isSandbox ? "blue" : "purple"}>
-                      {quest.isSandbox ? "Sandbox" : team?.name}
-                    </Badge>
+                    <Badge tone={quest.isSandbox ? "blue" : "purple"}>{quest.isSandbox ? "Sandbox" : team?.name}</Badge>
                     {quest.outputs.map((output) => (
                       <Badge key={output} tone="neutral">
                         {output}
@@ -48,9 +46,7 @@ export default function ProjectsPage() {
                   </div>
                   <CardTitle>{quest.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm leading-6 text-slate-600">
-                  {quest.description}
-                </CardContent>
+                <CardContent className="text-sm leading-6 text-slate-600">{quest.description}</CardContent>
               </Card>
             );
           })}
